@@ -5,12 +5,12 @@
     <summary>
       <h1>Q-Guided Flow</h1>
       <br>
-      <h2><a href="https://arxiv.org/pdf/2606.11087">Paper</a> &emsp; <a href="https://q-guided-flow.github.io/">Project page</a></h2>
+      <h2><a href="https://arxiv.org/pdf/2606.11087" style="color: #73A4C6">[Paper]</a> &emsp; <a href="https://q-guided-flow.github.io/" style="color: #73A4C6">[Website]</a></h2>
     </summary>
   </ul>
 </div>
 
-<img src="assets/teaser.png" width="80%">
+<img src="assets/teaser.png" width="100%">
 
 </div>
 
