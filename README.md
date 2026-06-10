@@ -1,7 +1,25 @@
-# QGF: Q-Guided Flow
+<div align="center">
 
-QGF trains a BC flow policy and an IQL critic jointly, then at inference time guides the denoising
-process with the critic gradient — achieving policy improvement without any actor-critic training.
+<div id="user-content-toc" style="margin-bottom: 50px">
+  <ul align="center" style="list-style: none;">
+    <summary>
+      <h1>Q-Guided Flow</h1>
+      <br>
+      <h2><a href="https://arxiv.org/pdf/2606.11087">Paper</a> &emsp; <a href="https://q-guided-flow.github.io/">Project page</a></h2>
+    </summary>
+  </ul>
+</div>
+
+<img src="assets/teaser.png" width="80%">
+
+</div>
+
+## Overview
+
+Q-guided flow (QGF) is a test-time RL algorithm that trains a reference *flow-matching* policy
+via behavioral cloning and a TD-based critic separately, then at inference guides the denoising
+process with a novel critic gradient estimator to sample higher-value actions — achieving
+policy improvement without any actor-critic training.
 
 ## Installation
 
@@ -127,3 +145,17 @@ There are also other environment types supported under `envs/`, such as exorl, d
 pre-commit install
 ```
 
+## Acknowledgments
+This codebase is built with reference implementations from [FQL](https://github.com/seohongpark/fql) and [QAM](https://github.com/ColinQiyangLi/qam).
+
+## BibTeX
+
+```bibtex
+@article{zhou2026qgf,
+  title   = {Test-Time Gradient Guidance of Flow Policies in Reinforcement Learning},
+  author  = {Zhou, Zhiyuan and Peng, Andy and Xu, Charles and Li, Qiyang and
+             Springenberg, Tobias and Frans, Kevin and Levine, Sergey},
+  year    = {2026},
+  url     = {https://arxiv.org/abs/2606.11087},
+}
+```
