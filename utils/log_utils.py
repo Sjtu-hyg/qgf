@@ -3,7 +3,6 @@ import pathlib
 import subprocess
 import tempfile
 from datetime import datetime
-from tkinter import W
 
 import absl.flags as flags
 import ml_collections
