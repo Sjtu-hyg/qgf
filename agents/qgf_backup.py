@@ -163,9 +163,8 @@ class QGFAgent(flax.struct.PyTreeNode):
         guidance_weight: float = 1.0,
         rejection_sampling: int = 1,
     ) -> jnp.ndarray:
-        """Denoise with time-varying guidance: v = v_bc + (1-t)/t * qgrad_a_t (t > 0).
+        """Denoise with per-step classifier guidance: v = v_bc + guidance_weight * qgrad_a_t.
 
-        When t ≈ 0 (first denoising step), guidance is skipped because (1-t)/t diverges.
         qgrad_a_t is dQ/da_approx (optionally chain-ruled through da_approx/da_t via
         apply_jacobian) where a_approx is determined by denoised_action_approx.
         """
@@ -223,12 +222,7 @@ class QGFAgent(flax.struct.PyTreeNode):
                 jac = jac_per_batch(a, observations, tv)
                 qgrad = jnp.einsum("bi,bij->bj", qgrad, jac)
 
-            # Time-varying guidance: coeff = (1-t)/t, skip at t ≈ 0
-            eps = jnp.finfo(tv.dtype).eps
-            time_coeff = jnp.where(tv > eps, (1 - tv) / jnp.maximum(tv, eps), 0.0)
-            guided = v_bc + guidance_weight * time_coeff * qgrad
-
-            return a + guided * dt, None
+            return a + (v_bc + guidance_weight * qgrad) * dt, None
 
         actions, _ = jax.lax.scan(
             step,

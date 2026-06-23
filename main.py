@@ -141,8 +141,11 @@ def _setup_experiment(config):
     exp_hash = hashlib.sha256(json.dumps(config.to_dict()).encode()).hexdigest()[:8]
     exp_name = f"{FLAGS.wandb_run_group}_{agent_name}_{env_short}_seed{FLAGS.seed:02d}_{exp_hash}"
 
-    save_subpath = [FLAGS.wandb_project, FLAGS.wandb_run_group, exp_name]
-    FLAGS.save_dir = os.path.join(FLAGS.save_dir, *save_subpath)
+    if FLAGS.save_dir == "exp/":
+        save_subpath = [FLAGS.wandb_project, FLAGS.wandb_run_group, exp_name]
+        FLAGS.save_dir = os.path.join(FLAGS.save_dir, *save_subpath)
+    else:
+        FLAGS.save_dir = os.path.join(FLAGS.save_dir, exp_name)
     os.makedirs(FLAGS.save_dir, exist_ok=True)
 
     return agent_name, exp_name
