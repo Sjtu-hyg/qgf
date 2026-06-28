@@ -90,7 +90,7 @@ for t in "${TASKS[@]}"; do
     --ogbench_dataset_dir=$OGBENCH_DATA_DIR/${PREFIX}-play-100m-v0/ \
     --dataset_replace_interval=1000 \
     --offline_steps=500000 --eval_interval=100000 --save_interval=100000 \
-    --eval_episodes=30 --video_episodes=0 --eval_vecenv_size=1 \
+    --eval_episodes=30 --video_episodes=0 \
     --guidance_weights=0.004,0.008,0.01,0.02,0.04,0.06,0.08,0.1,0.12 \
     --save_dir=$SAVE_DIR \
     --wandb_run_group=bc_iql; then

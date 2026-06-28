@@ -6,6 +6,7 @@
 |------|------|------|
 | [01_qgf_architecture.md](01_qgf_architecture.md) | 架构、网络、Flow Matching 原理、IQL 原理、推理机制、Reward 设计、训练曲线解读 | 理解方法 |
 | [02_experiment_guide.md](02_experiment_guide.md) | 训练命令、评估命令、实验结果、Singletask 多任务机制、Wandb、Debug | 跑实验、查结果 |
+| [06_network_architecture.md](06_network_architecture.md) | QGF 网络架构（MLP）、U-Net 为什么适合扩散模型、Flow Matching 架构选择 | 理解网络设计 |
 
 ## 快速问答
 
